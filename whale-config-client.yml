@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 9011
+spring:
+  profiles: dev
+  application:
+    name: whale-config-client1
+# 注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8888/eureka/
+    register-with-eureka: false
+
+#服务信息
+info:
+  app.name: whale-config-client-dev
+  company.name: bei
+
+---
+server:
+  port: 9012
+spring:
+  profiles: test
+  application:
+    name: whale-config-client2
+# 注册中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8888/eureka/
+    register-with-eureka: false
+
+#服务信息
+info:
+  app.name: whale-config-client-test
+  company.name: bei

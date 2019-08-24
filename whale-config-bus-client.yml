@@ -9,7 +9,7 @@ server:
 spring:
   profiles: dev
   application:
-    name: whale-config-bus-client4
+    name: whale-config-bus-client1
 # 注册中心配置
 eureka:
   client:
@@ -19,8 +19,8 @@ eureka:
 
 #服务信息
 info:
-  app.name: whale-config-client-dev
-  company.name: bei
+  app.name: whale-config-client-devv
+  company.name: beibei
 
 ---
 server:
@@ -28,7 +28,7 @@ server:
 spring:
   profiles: test
   application:
-    name: whale-config-client3
+    name: whale-config-client2
 # 注册中心配置
 eureka:
   client:

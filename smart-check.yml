@@ -1,0 +1,213 @@
+spring:
+  profiles:
+    active:
+      - local
+
+---
+server:
+  port: 6507
+  tomcat:
+    accesslog:
+      enabled: true
+    uri-encoding: utf-8
+
+
+event:
+  exchange: exchange.event.dev
+  queue: topic.event.check.dev
+
+spring:
+  profiles: local
+  application:
+    name: smart-check
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://119.3.93.79:3306/com-smart-check?useUnicode=true&amp&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    password: U3swlqf7rd8Eac
+    username: root
+  #  redis:
+  #    host: 101.204.248.138
+  #    port: 6380
+  #    timeout: 10000
+  #    password: root157111#
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: bei
+    timeout: 10000
+  http:
+    multipart:
+      maxFileSize: 500Mb
+      maxRequestSize: 500Mb
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+rabbitmq:
+  #host: 119.3.93.79
+  #port: 5672
+  #username: admin
+  #password: admin11
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.smart.check.**.model
+
+# PAGEHELPER
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+# LOGGING
+logging:
+  #配置日志文件路径
+  path: ..\log\orders
+  level:
+    com.smart.check: debug
+
+#FTP服务器。需要安装nginx(默认端口80,配置nginx.conf映射路径为ftp的path)
+ftp:
+  ftphost: 192.168.5.51
+  ftpport: 21
+  nginxhost: 101.204.248.138
+  nginxport: 8888
+  username: ftpuser
+  password: ftpuser123
+  path: /home/ftpfile/smart/
+
+
+#远程服务器
+remote:
+  server:
+    job: http://localhost:6070/ #定时器服务器
+    base: http://localhost:6501/ #基础服务器
+    fee: http://localhost:6502/ #费用服务器
+    install: http://localhost:6503/ #报装服务器
+    order: http://localhost:6504/ #工单服务器
+    message: http://localhost:6505/ #消息服务器
+    reading: http://localhost:6506/ #抄表服务器
+
+#调用数据库
+mydb:
+  author: com-smart-dev-author #权限数据库
+  install: com-smart-dev-install-vv #报装数据库
+  fee: com-smart-dev-fee #费用数据库
+  order: com-smart-dev-order #工单数据库
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+  instance:
+    hostname: localhost
+    instance-id: check-service
+    prefer-ip-address: true
+
+---
+server:
+  port: 6507
+  tomcat:
+    accesslog:
+      enabled: true
+    uri-encoding: utf-8
+
+event:
+  exchange: exchange.event.dev
+  queue: topic.event.check.dev
+
+spring:
+  profiles: localZS
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zs-com-smart-check?useUnicode=true&amp&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull
+    password: root
+    username: root
+  #  redis:
+  #    host: 101.204.248.138
+  #    port: 6380
+  #    timeout: 10000
+  #    password: root157111#
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: bei
+    timeout: 10000
+  http:
+    multipart:
+      maxFileSize: 500Mb
+      maxRequestSize: 500Mb
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+rabbitmq:
+  #host: 119.3.93.79
+  #port: 5672
+  #username: admin
+  #password: admin11
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  type-aliases-package: com.smart.check.**.model
+  global-config:
+    db-config:
+      field-strategy: not_null
+
+# PAGEHELPER
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+# LOGGING
+logging:
+  #配置日志文件路径
+  path: ..\log\orders
+  level:
+    com.smart.check: debug
+
+#FTP服务器。需要安装nginx(默认端口80,配置nginx.conf映射路径为ftp的path)
+ftp:
+  ftphost: 192.168.5.51
+  ftpport: 21
+  nginxhost: 101.204.248.138
+  nginxport: 8888
+  username: ftpuser
+  password: ftpuser123
+  path: /home/ftpfile/smart/
+
+
+#远程服务器
+remote:
+  server:
+    job: http://localhost:6070/ #定时器服务器
+    base: http://localhost:6501/ #基础服务器
+    fee: http://localhost:6502/ #费用服务器
+    install: http://localhost:6503/ #报装服务器
+    order: http://localhost:6504/ #工单服务器
+    message: http://localhost:6505/ #消息服务器
+    reading: http://localhost:6506/ #抄表服务器
+
+#调用数据库
+mydb:
+  author: com-smart-dev-author #权限数据库
+  install: com-smart-dev-install-vv #报装数据库
+  fee: com-smart-dev-fee #费用数据库
+  order: com-smart-dev-order #工单数据库
+
+

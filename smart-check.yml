@@ -102,14 +102,14 @@ mydb:
   fee: com-smart-dev-fee #费用数据库
   order: com-smart-dev-order #工单数据库
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:8700/eureka
-  instance:
-    hostname: localhost
-    instance-id: check-service
-    prefer-ip-address: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+#  instance:
+#    hostname: localhost
+#    instance-id: check-service
+#    prefer-ip-address: true
 
 ---
 server:

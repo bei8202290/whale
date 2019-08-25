@@ -113,7 +113,7 @@ mydb:
 
 ---
 server:
-  port: 6507
+  port: 7507
   tomcat:
     accesslog:
       enabled: true
